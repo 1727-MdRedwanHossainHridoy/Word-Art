@@ -2,7 +2,7 @@ import java.util.*;
 
 public class NameWithNamesArt {
     public static void main(String[] args) {
-        // List of names provided
+       
         List<String> names = Arrays.asList(
                 "Fahim", "Srabon", "Rahat", "Faishal", "Rakib", "Shohan", "Marjan", "Santa",
                 "NIROB", "HUSAIN", "REZAUL", "ARIFUL", "ALIM", "EMON", "Mariam", "Farhan",
@@ -12,28 +12,23 @@ public class NameWithNamesArt {
                 "Nayeemul", "Vaskar", "Prottoy", "Jobaer", "Fairuj", "Dipjay", "Monir", "Ananya", "Ridi"
         );
 
-        // Word to be sketched
+       
         String targetWord = "Hridoy";
 
-        // Generate and print the art
+     
         printWordArt(targetWord, names);
     }
 
-    /**
-     * Prints a word using ASCII art, replacing '*' with provided names.
-     */
+   
     public static void printWordArt(String word, List<String> names) {
-        // Map for ASCII representation of letters
+   
         Map<Character, String[]> asciiMap = createAsciiMap();
         Random random = new Random();
 
-        // Height of ASCII letters
+  
         int asciiHeight = 7;
-
-        // Additional spacing between constructed letters
         int extraSpacing = 10;
 
-        // Iterate over each row of ASCII art
         for (int row = 0; row < asciiHeight; row++) {
             for (char ch : word.toUpperCase().toCharArray()) {
                 String[] asciiChar = asciiMap.getOrDefault(ch, asciiMap.get(' '));
@@ -41,22 +36,20 @@ public class NameWithNamesArt {
                     // Replace '*' with random names, and keep spaces
                     for (char c : asciiChar[row].toCharArray()) {
                         if (c == '*') {
-                            System.out.printf("%-8s", names.get(random.nextInt(names.size()))); // 8-character width
+                            System.out.printf("%-8s", names.get(random.nextInt(names.size())));
                         } else {
-                            System.out.print("        "); // Blank space
+                            System.out.print("        ");
                         }
                     }
                 }
                 // Add extra spacing between letters
                 System.out.print(" ".repeat(extraSpacing));
             }
-            System.out.println(); // Newline after each row
+            System.out.println();
         }
     }
 
-    /**
-     * Creates a map of ASCII art for each character.
-     */
+   
     public static Map<Character, String[]> createAsciiMap() {
         Map<Character, String[]> asciiMap = new HashMap<>();
 
